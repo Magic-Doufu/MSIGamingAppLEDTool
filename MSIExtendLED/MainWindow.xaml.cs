@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -76,9 +77,24 @@ namespace MSIExtendLED
     {
         string raw_value = "";
         string[] words, ext_cells, mystic_cells, function_cells, gaming_cells;
+
         public MainWindow()
         {
             InitializeComponent();
+            Process[] myProcesses = Process.GetProcessesByName("MSI_LED");
+            if (myProcesses.Length < 1)
+            {
+                try
+                {
+                    Process.Start(AppDomain.CurrentDomain.BaseDirectory + "MSI_LED.exe");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("MSI_LED Service can't not work! Please put the prorgram to \"Gaming App\" folder!");
+                    this.Close();
+                    return;
+                }
+            }
             List<Status_Function> status = new List<Status_Function>{ };
             status.Add(new Status_Function { Name = "無效果", Id = "0" });
             status.Add(new Status_Function { Name = "呼吸", Id = "1" });
