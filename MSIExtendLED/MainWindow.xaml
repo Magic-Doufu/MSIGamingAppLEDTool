@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MSI Gamming App LED Setting" d:DesignWidth="350" d:DesignHeight="300" Height="auto" SizeToContent="WidthAndHeight" Padding="0,0,10,10">
     <Grid>
-        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,10,10" Height="249" Width="322" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,10,10" Height="249" Width="322">
             <TabItem Header="MB INFO" Tag="INFO">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="MB:" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top"/>
@@ -16,26 +16,26 @@
                     <TextBlock x:Name="status_LED_extend" HorizontalAlignment="Left" Margin="99,77,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
                     <TextBlock x:Name="status_LED_function" HorizontalAlignment="Left" Margin="112,107,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
                     <TextBlock x:Name="status_LED_gaming" HorizontalAlignment="Left" Margin="107,137,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="chb_mystic" Content="Mystic LED:" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="chb_extend" Content="Extend LED:" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="chb_function" Content="Function LED:" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="chb_mystic" Content="Mystic LED:" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Tag="MB Mystic Light"/>
+                    <CheckBox x:Name="chb_extend" Content="Extend LED:" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Tag="MB Extend LED"/>
+                    <CheckBox x:Name="chb_function" Content="Function LED:" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Tag="MB Function LED"/>
                     <CheckBox x:Name="chb_gaming" Content="Gaming LED:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tab_ExtLED" Header="Extend LED" Width="80">
                 <Grid Background="#FFE5E5E5">
-                    <Slider x:Name="ext_hue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,10,0,0" Maximum="360" SmallChange="1" IsSnapToTickEnabled="True" LargeChange="30" Tag="ext" TickFrequency="5" PreviewMouseLeftButtonUp="MLBU_Sync"/>
+                    <Slider x:Name="ext_hue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,10,0,0" Maximum="360" SmallChange="1" IsSnapToTickEnabled="True" LargeChange="30" Tag="MB Extend LED" TickFrequency="5"/>
                     <TextBlock x:Name="tb_ext_hue" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-                    <Slider x:Name="ext_dark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,55,0,0" Maximum="1" SmallChange="0.01" IsSnapToTickEnabled="True" TickFrequency="0.01" LargeChange="0.1" Tag="ext" PreviewMouseLeftButtonUp="MLBU_Sync"/>
+                    <Slider x:Name="ext_dark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,55,0,0" Maximum="1" SmallChange="0.01" IsSnapToTickEnabled="True" TickFrequency="0.01" LargeChange="0.1" Tag="MB Extend LED"/>
                     <TextBlock x:Name="tb_ext_dark" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0"/>
                     <WrapPanel x:Name="color_ext_LED" HorizontalAlignment="Left" Height="100" Margin="10,112,0,0" VerticalAlignment="Top" Width="100"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tab_MysticLED" Header="Mystic LED">
                 <Grid Background="#FFE5E5E5">
-                    <Slider x:Name="mystic_hue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,10,0,0" Maximum="360" SmallChange="1" IsSnapToTickEnabled="True" LargeChange="30" Tag="mystic" PreviewMouseLeftButtonUp="MLBU_Sync" TickFrequency="5"/>
+                    <Slider x:Name="mystic_hue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,10,0,0" Maximum="360" SmallChange="1" IsSnapToTickEnabled="True" LargeChange="30" Tag="MB Mystic Light" TickFrequency="5"/>
                     <TextBlock x:Name="tb_mystic_hue" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-                    <Slider x:Name="mystic_dark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,55,0,0" Maximum="1" SmallChange="0.01" IsSnapToTickEnabled="True" TickFrequency="0.01" LargeChange="0.1" Tag="mystic" PreviewMouseLeftButtonUp="MLBU_Sync"/>
+                    <Slider x:Name="mystic_dark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,55,0,0" Maximum="1" SmallChange="0.01" IsSnapToTickEnabled="True" TickFrequency="0.01" LargeChange="0.1" Tag="MB Mystic Light"/>
                     <TextBlock x:Name="tb_mystic_dark" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0"/>
                     <WrapPanel x:Name="color_mystic_LED" HorizontalAlignment="Left" Height="100" Margin="10,112,0,0" VerticalAlignment="Top" Width="100"/>
                 </Grid>
