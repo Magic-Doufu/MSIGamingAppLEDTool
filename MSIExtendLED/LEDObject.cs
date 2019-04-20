@@ -14,6 +14,7 @@ public class LEDObject
     public Slider sl_hue, sl_dark;
     public WrapPanel wpc;
     public TabItem tab;
+    public ComboBox cmb;
     MSIExtendLED.MainWindow win = (MSIExtendLED.MainWindow)Application.Current.MainWindow;
     public LEDObject(string[] setting, CheckBox checkBox, TextBlock status)
     {
@@ -39,15 +40,26 @@ public class LEDObject
     }
     public void handle_init()
     {
-        sl_dark.Value = this.Dark();
-        sl_hue.Value = this.Hue();
-        tb_dark.Text = cells[9];
-        tb_hue.Text = cells[8];
-        wpc.Background = new SolidColorBrush(ColorScale.ColorFromHSL(this.Hue(), 1, 1 - this.Dark()));
-        sl_hue.ValueChanged += SLVC;
-        sl_dark.ValueChanged += SLVC;
-        sl_dark.PreviewMouseLeftButtonUp += MLBU_Sync;
-        sl_hue.PreviewMouseLeftButtonUp += MLBU_Sync;
+        try
+        {
+            sl_dark.Value = this.Dark();
+            sl_hue.Value = this.Hue();
+            tb_dark.Text = cells[9];
+            tb_hue.Text = cells[8];
+            wpc.Background = new SolidColorBrush(ColorScale.ColorFromHSL(this.Hue(), 1, (1 - this.Dark()) > 0.5 ? 1 - this.Dark() : 0.5));
+            sl_hue.ValueChanged += SLVC;
+            sl_dark.ValueChanged += SLVC;
+            sl_dark.PreviewMouseLeftButtonUp += MLBU_Sync;
+            sl_hue.PreviewMouseLeftButtonUp += MLBU_Sync;
+            cmb.ItemsSource = win.mode_list;
+            cmb.SelectedIndex = int.Parse(cells[4]);
+            cmb.SelectionChanged += ModeSC;
+        }
+        catch (Exception)
+        {
+
+            return;
+        }
     }
     public Double Dark()
     {
@@ -76,7 +88,7 @@ public class LEDObject
         tb_dark.Text = sl_dark.Value.ToString();
         cells[8] = tb_hue.Text;
         cells[9] = tb_dark.Text;
-        wpc.Background = new SolidColorBrush(ColorScale.ColorFromHSL(this.Hue(), 1, 1 - this.Dark()));
+        wpc.Background = new SolidColorBrush(ColorScale.ColorFromHSL(this.Hue(), 1, (1 - this.Dark()) > 0.5 ? 1 - this.Dark() : 0.5));
     }
     private void Chb_Checked(object sender, RoutedEventArgs e)
     {
@@ -86,5 +98,12 @@ public class LEDObject
     private void MLBU_Sync(object sender, MouseButtonEventArgs e)
     {
         win.sc.syncReg(((Slider)sender).Tag.ToString());
+    }
+    private void ModeSC(object sender, SelectionChangedEventArgs e)
+    {
+        cells[4] = (((ComboBox)sender).SelectedItem as MSIExtendLED.Status_Function).GetValue();
+        win.sc.syncReg(((ComboBox)sender).Tag.ToString());
+        //MessageBox.Show();
+
     }
 }

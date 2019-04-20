@@ -28,7 +28,9 @@
                     <TextBlock x:Name="tb_ext_hue" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
                     <Slider x:Name="ext_dark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,55,0,0" Maximum="1" SmallChange="0.01" IsSnapToTickEnabled="True" TickFrequency="0.01" LargeChange="0.1" Tag="MB Extend LED"/>
                     <TextBlock x:Name="tb_ext_dark" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0"/>
-                    <WrapPanel x:Name="color_ext_LED" HorizontalAlignment="Left" Height="100" Margin="10,112,0,0" VerticalAlignment="Top" Width="100"/>
+                    <WrapPanel x:Name="color_ext_LED" HorizontalAlignment="Left" Height="102" Margin="0,120,0,0" VerticalAlignment="Top" Width="316"/>
+                    <ComboBox x:Name="ext_Mode" HorizontalAlignment="Left" Margin="44,94,0,0" VerticalAlignment="Top" Width="120" Tag="MB Extend LED" SelectedIndex="0"/>
+                    <Label Content="Mode" HorizontalAlignment="Left" Margin="0,95,0,0" VerticalAlignment="Top" Height="20" Padding="5,0"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tab_MysticLED" Header="Mystic LED">
@@ -37,7 +39,9 @@
                     <TextBlock x:Name="tb_mystic_hue" HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
                     <Slider x:Name="mystic_dark" HorizontalAlignment="Left" VerticalAlignment="Top" Width="296" Height="20" Margin="10,55,0,0" Maximum="1" SmallChange="0.01" IsSnapToTickEnabled="True" TickFrequency="0.01" LargeChange="0.1" Tag="MB Mystic Light"/>
                     <TextBlock x:Name="tb_mystic_dark" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0"/>
-                    <WrapPanel x:Name="color_mystic_LED" HorizontalAlignment="Left" Height="100" Margin="10,112,0,0" VerticalAlignment="Top" Width="100"/>
+                    <WrapPanel x:Name="color_mystic_LED" HorizontalAlignment="Left" Height="101" Margin="0,121,0,0" VerticalAlignment="Top" Width="316"/>
+                    <ComboBox x:Name="mystic_Mode" HorizontalAlignment="Left" Margin="44,95,0,0" VerticalAlignment="Top" Width="120" Tag="MB Mystic Light" SelectedIndex="0"/>
+                    <Label Content="Mode" HorizontalAlignment="Left" Margin="0,95,0,0" VerticalAlignment="Top" Height="20" Padding="5,0"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tab_FunctionLED" Header="Function LED" Width="85" Visibility="Hidden">

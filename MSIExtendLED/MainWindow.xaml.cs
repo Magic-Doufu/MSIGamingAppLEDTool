@@ -22,13 +22,22 @@ namespace MSIExtendLED
     /// MainWindow.xaml 的互動邏輯
     /// </summary>
     /// 
-    class Status_Function
+    public class Status_Function
     {
         public string Name { get; set; }
         public string Id { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
+        public string GetValue()
+        {
+            return Id;
+        }
     }
     public partial class MainWindow : Window
     {
+        public List<Status_Function> mode_list = new List<Status_Function> { };
         public Sync_Core sc;
 
         public MainWindow()
@@ -55,14 +64,13 @@ namespace MSIExtendLED
                     }
                 }
             }
-            /*List<Status_Function> status = new List<Status_Function>{ };
-            status.Add(new Status_Function { Name = "無效果", Id = "0" });
-            status.Add(new Status_Function { Name = "呼吸", Id = "1" });
-            status.Add(new Status_Function { Name = "閃爍", Id = "2" });
-            status.Add(new Status_Function { Name = "雙重閃爍", Id = "3" });
-            status.Add(new Status_Function { Name = "彩虹", Id = "7" });
-            status.Add(new Status_Function { Name = "閃電", Id = "8" });
-            status.Add(new Status_Function { Name = "CPU溫度", Id = "10" });*/
+            mode_list.Add(new Status_Function { Name = "無效果", Id = "0" });
+            mode_list.Add(new Status_Function { Name = "呼吸", Id = "1" });
+            mode_list.Add(new Status_Function { Name = "閃爍", Id = "2" });
+            mode_list.Add(new Status_Function { Name = "雙重閃爍", Id = "3" });
+            mode_list.Add(new Status_Function { Name = "彩虹", Id = "7" });
+            mode_list.Add(new Status_Function { Name = "閃電", Id = "8" });
+            //mode_list.Add(new Status_Function { Name = "CPU溫度", Id = "10" });
             try
             {
                 sc = new Sync_Core();
@@ -76,6 +84,7 @@ namespace MSIExtendLED
                     extLED.tb_hue = tb_ext_hue;
                     extLED.wpc = color_ext_LED;
                     extLED.tab = tab_ExtLED;
+                    extLED.cmb = ext_Mode;
                     extLED.handle_init();
                     sc.LEDobjs.Add(extLED);
                 }
@@ -90,6 +99,7 @@ namespace MSIExtendLED
                     mysticLED.tb_hue = tb_mystic_hue;
                     mysticLED.wpc = color_mystic_LED;
                     mysticLED.tab = tab_MysticLED;
+                    extLED.cmb = mystic_Mode;
                     mysticLED.handle_init();
                     sc.LEDobjs.Add(mysticLED);
                 }
