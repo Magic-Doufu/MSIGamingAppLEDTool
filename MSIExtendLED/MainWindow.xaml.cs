@@ -99,7 +99,7 @@ namespace MSIExtendLED
                     mysticLED.tb_hue = tb_mystic_hue;
                     mysticLED.wpc = color_mystic_LED;
                     mysticLED.tab = tab_MysticLED;
-                    extLED.cmb = mystic_Mode;
+                    mysticLED.cmb = mystic_Mode;
                     mysticLED.handle_init();
                     sc.LEDobjs.Add(mysticLED);
                 }
